@@ -25,7 +25,7 @@ The synthesized scribble annotations used for training could be download from he
 
 The manully drawn initial scribbles for the validation set of DAVIS and Youtube-VOS could be download from here:  [[GoogleDriver](https://drive.google.com/file/d/17vQd9jmhprWflIsy8kntSOf-d51RPZWL/view?usp=sharing)] [[BaiduYun(code:yhdj)](https://pan.baidu.com/s/1ir6h3RGa1uRiI6XTIdMREw)]
 
-In the annotation file of a frame with $N$ objects, the region with a value of $n$ ($n\in\{1, 2, ..., N\}$) means the scribble of the $n$-th object, the region with a value of $N+1$ means the scribble of the background, and the region with a value of $0$ means the unlabeled region.
+In the annotation file of a frame with $N$ objects, the region with a value of $n$ means the scribble of the $n$-th object, the region with a value of $N+1$ means the scribble of the background, and the region with a value of $0$ means the unlabeled region.
 
 ## Training and Evaluation
 
