@@ -12,7 +12,7 @@ Our Reliability-Hierarchical Memory Network consists of the reliability-hierarch
 
 Synthesized training scribbles
 
-Manully drawn evaluation scribbles
+Manually drawn evaluation scribbles
 
 - DAVIS
 ![Evaluation scribbles for DAVIS](figs/evaluation_scribbles_for_davis.png)
@@ -29,4 +29,56 @@ In the annotation file of a frame with $N$ objects, the region with a value of $
 
 ## Training and Evaluation
 
-The code and pre-trained model is coming soon.
+### Data preparation
+The downloaded scribbles should be organized as follows:
+```
+/datasets
+    |——————COCO
+            |——————scribbles
+                        |——————annotation1.bmp
+                        |——————annotation2.bmp
+                        |——————......
+            |——————COCO_scribbles.json
+            |——————...
+    |——————DAVIS
+            |——————train_scribbles
+                          |——————video1
+                          |——————video2
+                          |——————......
+            |——————valid_scribbles0
+                          |——————video1
+                          |——————video2
+                          |——————......
+            |——————valid_scribbles1
+            |——————valid_scribbles2
+            |——————valid_scribbles3
+            |——————valid_scribbles4
+            |——————...
+    |——————Youtube-VOS
+            |——————train_scribbles
+                          |——————video1
+                          |——————video2
+                          |——————......
+            |——————valid_scribbles
+                          |——————video1
+                          |——————video2
+                          |——————......
+            |——————...
+```
+### Training
+```
+# pre-training on coco
+/opt/conda/bin/python -m torch.distributed.launch --nproc_per_node 8 train_script_pretrain.py --config pre_training
+# video training on davis and youtube-vos
+/opt/conda/bin/python -m torch.distributed.launch --nproc_per_node 4 train_script_video_training.py --config video_training
+```
+### Evaluation
+The pre-trained models could be downloaded from here:[[GoogleDriver](https://drive.google.com/file/d/1IudDE9ulUUvIKkS8dsApW9-Wac6j6a2_/view?usp=share_link)] [[BaiduYun(code:ghbg)](https://pan.baidu.com/s/1i8SYXyrprnyiDSI2zCFNtw)], and should be put to the path of `./checkpoints/pretrain_weights_video_training`.
+```
+# evaluation on davis 2016 validation set
+/opt/conda/bin/python eval_davis.py --gpu 0 --set val --year 16 --config video_training --ckpt_num 69
+# evaluation on davis 2017 validation set
+/opt/conda/bin/python eval_davis.py --gpu 0 --set val --year 17 --config video_training --ckpt_num 78
+# evaluation on youtube-vos 2018/2019 validation set
+/opt/conda/bin/python eval_ytb.py --gpu 0 --set val --config video_training --ckpt_num 71 --size 1000
+```
