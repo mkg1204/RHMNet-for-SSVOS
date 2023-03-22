@@ -65,6 +65,14 @@ The downloaded scribbles should be organized as follows:
                           |——————......
             |——————...
 ```
+### Environment
+Our code is implemented based on the `Python3.7`, `PyTorch 1.10.0` and `CUDA11`.
+
+Create the environment for RHMNet:
+```
+conda env create -f requirments.yaml
+```
+Then run `conda activate RHMNet` to activate the environment.
 ### Training
 ```
 # pre-training on coco
