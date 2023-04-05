@@ -1,7 +1,11 @@
 # RHMNet-for-SSVOS
 
 This paper aims to solve the video object segmentation (VOS) task in a scribble-supervised manner, in which VOS models are not only trained by the sparse scribble annotations but also initialized with the sparse target scribbles for inference. Thus, the annotation burdens for both training and initialization can be substantially lightened. The difficulties of scribble-supervised VOS lie in two aspects. On the one hand, it requires the powerful ability to learn from the sparse scribble annotations during training. On the other hand, it demands strong reasoning capability during inference given only a sparse initial target scribble. In this work, we propose a Reliability-Hierarchical Memory Network (RHMNet) to predict the target mask in a step-wise expanding strategy w.r.t. the memory reliability level. To be specific, RHMNet first only uses the memory in the high reliability level to locate the region with high reliability belonging to the target, which is highly similar to the initial target scribble. Then it expands the located high-reliability region to the entire target conditioned on the region itself and the memories in all reliability levels. Besides, we propose a scribble-supervised learning mechanism to facilitate the learning of our model to predict dense results. It mines the pixel-level relation within the single frame and the frame-level relation within the sequence to take full advantage of the scribble annotations in sequence training samples. The favorable performance on two popular benchmarks demonstrates that our method is promising.
-> **Reliablity-Hierarchical Memory Network for Scribble-Supervised Video Object Segmentation**, Zikun Zhou, Kaige Mao, Wenjie Pei, Hongpeng Wang, Yaowei Wang, Zhenyu He. [[Paper]()]
+> **Reliablity-Hierarchical Memory Network for Scribble-Supervised Video Object Segmentation**, Zikun Zhou, Kaige Mao, Wenjie Pei, Hongpeng Wang, Yaowei Wang, Zhenyu He. [[Paper](https://arxiv.org/abs/2303.14384)]
+
+## Updates
+
+- **2023.04.05** Update the missing annotation file named `COCO_scribbles.json`. [[GoogleDriver](https://drive.google.com/file/d/1j_eS21M3p_e4vW9-K-TrqbjAh2jqQ243/view?usp=share_link)] [[BaiduYun(code:v3ua)](https://pan.baidu.com/s/10-o19JuyxfYFE0XKy3tW7Q)]
 
 ## Framework of our RHMNet
 
