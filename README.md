@@ -9,7 +9,7 @@ This paper aims to solve the video object segmentation (VOS) task in a scribble-
 
 ## Framework of our RHMNet
 
-![Overall framework of our Reliability-guided Hierarchical Memory Network](figs/framework.jpg)
+![Overall framework of our Reliability-guided Hierarchical Memory Network](figs/framework.png)
 Our Reliability-guided Hierarchical Memory Network consists of the reliability-hierarchical memory bank, the feature extractor, the memory encoding module, the matching module, and the segmentation head. For processing a new frame, the proposed method first captures the reliable region, which is the region highly similar to the initial target scribble region, and then accordingly segments the entire target. In each expanding step, only the historical information in the corresponding or higher reliability level is used as the reference for memory matching.
 
 ## Scribble Samples
